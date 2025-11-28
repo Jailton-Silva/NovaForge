@@ -21,90 +21,97 @@ onMounted(() => {
 </script>
 
 <template>
-    <div
-        class="star-background min-h-screen overflow-hidden relative font-sans"
-    >
-        <div id="stars" :style="{ boxShadow: shadowsSmall }"></div>
-        <div id="stars2" :style="{ boxShadow: shadowsMedium }"></div>
-        <div id="stars3" :style="{ boxShadow: shadowsBig }"></div>
+    <div class="min-h-screen bg-slate-900 overflow-x-hidden relative font-sans">
+        <!-- CONTAINER COM ARCO + GLOW -->
+        <div class="relative neon-container">
+            <!-- Estrelas - contidas dentro do arco -->
+            <div class="stars-container">
+                <div id="stars" :style="{ boxShadow: shadowsSmall }"></div>
+                <div id="stars2" :style="{ boxShadow: shadowsMedium }"></div>
+                <div id="stars3" :style="{ boxShadow: shadowsBig }"></div>
+            </div>
 
-        <div class="relative z-10">
-            <Header />
-            <slot />
+            <!-- Conteúdo visível (Header + slot) -->
+            <div class="content-wrapper">
+                <Header />
+                <slot />
+            </div>
         </div>
     </div>
 </template>
 
-<style>
-.star-background {
-    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+
+<style scoped>
+.neon-container {
+    background: radial-gradient(
+        circle at bottom,
+        rgba(59, 130, 246, 0.35) 0%,
+        rgba(30, 58, 138, 0.9) 60%,
+        #090a0f 100%
+    );
+    position: relative;
+    min-height: 40vh;
+    width: 120%;
+    left: -10%;
+    padding-bottom: 100px;
+
+    /* ARREDONDAMENTO */
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+
+    /* SUAVE BRILHO AZUL EMBAIXO */
+    box-shadow: 0 40px 120px rgba(59, 130, 246, 0.45);
 }
 
-#stars,
-#stars2,
-#stars3 {
+/* Container das estrelas - contido dentro do arco */
+.stars-container {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    overflow: hidden;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+    pointer-events: none;
+}
+
+/* Conteúdo visível - NÃO cortado */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    width: calc(100vw);
+    margin-left: calc((100% - 100vw) / 2);
+    padding: 0 1rem;
+}
+
+/* Estrelas */
+#stars, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
     background: transparent;
 }
 
-#stars {
-    width: 1px;
-    height: 1px;
-    animation: animStar 50s linear infinite;
-}
+#stars { width: 1px; height: 1px; animation: animStar 50s linear infinite; }
+#stars2 { width: 2px; height: 2px; animation: animStar 100s linear infinite; }
+#stars3 { width: 3px; height: 3px; animation: animStar 150s linear infinite; }
 
-#stars::after {
-    content: " ";
+#stars::after, #stars2::after, #stars3::after {
+    content: "";
     position: absolute;
     top: 2000px;
-    width: 1px;
-    height: 1px;
-    background: transparent;
-    box-shadow: inherit;
-}
-
-#stars2 {
-    width: 2px;
-    height: 2px;
-    animation: animStar 100s linear infinite;
-}
-
-#stars2::after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 2px;
-    height: 2px;
-    background: transparent;
-    box-shadow: inherit;
-}
-
-#stars3 {
-    width: 3px;
-    height: 3px;
-    animation: animStar 150s linear infinite;
-}
-
-#stars3::after {
-    content: " ";
-    position: absolute;
-    top: 2000px;
-    width: 3px;
-    height: 3px;
+    width: inherit;
+    height: inherit;
     background: transparent;
     box-shadow: inherit;
 }
 
 @keyframes animStar {
-    from {
-        transform: translateY(0px);
-    }
-    to {
-        transform: translateY(-2000px);
-    }
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
 }
 </style>
