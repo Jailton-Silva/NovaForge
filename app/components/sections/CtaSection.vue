@@ -16,9 +16,15 @@
         Não deixe gargalos operacionais limitarem seu crescimento. Vamos conversar e desenhar a solução ideal para o seu momento.
       </p>
       
-      <button class="bg-white text-blue-900 hover:bg-blue-50 font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl shadow-blue-900/20 text-lg">
+      <a 
+        href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar um diagnóstico técnico gratuito."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-white text-blue-900 hover:bg-blue-50 font-bold py-4 px-10 rounded-full transition-all transform hover:scale-105 shadow-xl shadow-blue-900/20 text-lg inline-flex items-center gap-2"
+      >
+        <Icon name="uil:whatsapp" class="w-6 h-6" />
         Quero Agendar Meu Diagnóstico Técnico
-      </button>
+      </a>
     </div>
   </section>
 </template>

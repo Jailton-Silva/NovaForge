@@ -1,8 +1,14 @@
 <script setup lang="ts">
+const { isVisible, elementRef } = useScrollAnimation();
 </script>
 
 <template>
-  <section id="about" class="py-20 px-4 relative z-10">
+  <section 
+    id="about" 
+    ref="elementRef"
+    class="py-20 px-4 relative z-10 transition-all duration-1000"
+    :class="isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'"
+  >
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>

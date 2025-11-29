@@ -17,11 +17,15 @@
     </p>
 
     <div class="mt-10 flex flex-col sm:flex-row gap-4 w-full justify-center">
-      <button
-        class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/25 text-lg"
+      <a
+        href="https://wa.me/5511999999999?text=Olá! Gostaria de agendar um diagnóstico técnico gratuito."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/25 text-lg inline-flex items-center justify-center gap-2"
       >
+        <Icon name="uil:whatsapp" class="w-6 h-6" />
         Agendar Diagnóstico Técnico Gratuito
-      </button>
+      </a>
     </div>
   </section>
 </template>
